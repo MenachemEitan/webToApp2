@@ -27,14 +27,14 @@ jobs:
         id: extract_branch
       - name: run script
         id: env_pointer
-        run: |
-          content=`node ./env-pointer.js ${{ steps.extract_branch.outputs.branch }}`
-          content="${content//'%'/'%25'}"
-          content="${content//$'\n'/'%0A'}"
-          content="${content//$'\r'/'%0D'}"
-          echo "::set-output name=envPointer::$content" 
-      - run: |
-          echo "app name needs to be: ${{ fromJson(steps.env_pointer.outputs.envPointer).app_name }}"
+      #   run: |
+      #     content=`node ./env-pointer.js ${{ steps.extract_branch.outputs.branch }}`
+      #     content="${content//'%'/'%25'}"
+      #     content="${content//$'\n'/'%0A'}"
+      #     content="${content//$'\r'/'%0D'}"
+      #     echo "::set-output name=envPointer::$content" 
+      # - run: |
+      #     echo "app name needs to be: ${{ fromJson(steps.env_pointer.outputs.envPointer).app_name }}"
       - name: Setup JDK
         uses: actions/setup-java@v1
         with:
